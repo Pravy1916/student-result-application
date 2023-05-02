@@ -1,0 +1,45 @@
+body{
+    background-color: blueviolet;
+    font-family: Arial, Helvetica, sans-serif;
+    color: azure;
+}
+
+
+.crudcontainer{
+    margin-left: 600px;
+    background-color:darkslategray;
+    width: 250px;
+    height: 170px;
+    border-radius: 10px;
+    margin-top: 140px;
+
+    
+}
+
+.crud a{
+    text-decoration: none;
+    color:azure;
+    display: flex;
+    justify-content: space-between;
+    background-color:red;
+    border-radius: 8px;
+    margin-top: 4px;
+    width: 100px;
+    padding: 6px ;
+}
+.crud{
+    margin: 30px 60px;
+    padding-top: 10px;
+}
+
+h1{
+    background-color: black;
+    border-radius: 4px;
+    height: 40px;
+    text-align: center;
+    margin: -6px;
+    padding: 0;
+}
+
+
+

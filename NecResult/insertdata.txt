@@ -1,0 +1,114 @@
+import java.io.*;  
+import java.sql.*;  
+import javax.servlet.*;  
+import javax.servlet.http.*;  
+  public class insert extends HttpServlet {    
+public void doPost(HttpServletRequest request, HttpServletResponse response)  
+            throws ServletException, IOException { 
+                response.setContentType("text/html");
+                PrintWriter out =response.getWriter();
+                String roll,branch,name,sub1,sub2,sub3,sub4,sub5,sub6,sub7,sub8,sub9,sub10;
+                String sub1grade,sub2grade,sub3grade,sub4grade,sub5grade,sub6grade,sub7grade,sub8grade,sub9grade,sub10grade;
+                String sub1gradepoint,sub2gradepoint,sub3gradepoint,sub4gradepoint,sub5gradepoint,sub6gradepoint,sub7gradepoint,sub8gradepoint,sub9gradepoint,sub10gradepoint;
+                String sub1credits,sub2credits,sub3credits,sub4credits,sub5credits,sub6credits,sub7credits,sub8credits,sub9credits,sub10credits;
+                // stdent details
+                roll=(String)request.getParameter("roll");
+                branch=(String)request.getParameter("branch");
+                name=(String)request.getParameter("name");
+                       
+                        // result details
+                
+                // subjects
+                sub1=(String)request.getParameter("sub1");
+                sub2=(String)request.getParameter("sub2");
+                sub3=(String)request.getParameter("sub3");
+                sub4=(String)request.getParameter("sub4");
+                sub5=(String)request.getParameter("sub5");
+                sub6=(String)request.getParameter("sub6");
+                sub7=(String)request.getParameter("sub7");
+                sub8=(String)request.getParameter("sub8");
+                sub9=(String)request.getParameter("sub9");
+                sub10=(String)request.getParameter("sub10");
+                // subject grade
+                sub1grade=(String)request.getParameter("sub1grade");
+                sub2grade=(String)request.getParameter("sub2grade");
+                sub3grade=(String)request.getParameter("sub3grade");
+                sub4grade=(String)request.getParameter("sub4grade");
+                sub5grade=(String)request.getParameter("sub5grade");
+                sub6grade=(String)request.getParameter("sub6grade");
+                sub7grade=(String)request.getParameter("sub7grade");
+                sub8grade=(String)request.getParameter("sub8grade");
+                sub9grade=(String)request.getParameter("sub9grade");
+                sub10grade=(String)request.getParameter("sub10grade");
+                // subject gradepoint
+                sub1gradepoint=(String)request.getParameter("sub1gradepoint");
+                sub2gradepoint=(String)request.getParameter("sub2gradepoint");
+                sub3gradepoint=(String)request.getParameter("sub3gradepoint");
+                sub4gradepoint=(String)request.getParameter("sub4gradepoint");
+                sub5gradepoint=(String)request.getParameter("sub5gradepoint");
+                sub6gradepoint=(String)request.getParameter("sub6gradepoint");
+                sub7gradepoint=(String)request.getParameter("sub7gradepoint");
+                sub8gradepoint=(String)request.getParameter("sub8gradepoint");
+                sub9gradepoint=(String)request.getParameter("sub9gradepoint");
+                sub10gradepoint=(String)request.getParameter("sub10gradepoint");
+
+                // subject credits
+                sub1credits=(String)request.getParameter("sub1credits");
+                sub2credits=(String)request.getParameter("sub2credits");
+                sub3credits=(String)request.getParameter("sub3credits");
+                sub4credits=(String)request.getParameter("sub4credits");
+                sub5credits=(String)request.getParameter("sub5credits");
+                sub6credits=(String)request.getParameter("sub6credits");
+                sub7credits=(String)request.getParameter("sub7credits");
+                sub8credits=(String)request.getParameter("sub8credits");
+                sub9credits=(String)request.getParameter("sub9credits");
+                sub10credits=(String)request.getParameter("sub10credits");
+        try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");  
+            Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","manager");  
+            Statement st=con.createStatement();
+            String std="insert into studentdetails values('"+roll+"','"+branch+"','"+name+"')" ;
+            String s1="insert into result values('"+roll+"','"+branch+"','"+sub1+"','"+sub1grade+"','"+sub1gradepoint+"','"+sub1credits+"')";
+            String s2="insert into result values('"+roll+"','"+branch+"','"+sub2+"','"+sub2grade+"','"+sub2gradepoint+"','"+sub2credits+"')";
+            String s3="insert into result values('"+roll+"','"+branch+"','"+sub3+"','"+sub3grade+"','"+sub3gradepoint+"','"+sub3credits+"')";
+            String s4="insert into result values('"+roll+"','"+branch+"','"+sub4+"','"+sub4grade+"','"+sub4gradepoint+"','"+sub4credits+"')";
+            String s5="insert into result values('"+roll+"','"+branch+"','"+sub5+"','"+sub5grade+"','"+sub5gradepoint+"','"+sub5credits+"')";
+            String s6="insert into result values('"+roll+"','"+branch+"','"+sub6+"','"+sub6grade+"','"+sub6gradepoint+"','"+sub6credits+"')";
+            String s7="insert into result values('"+roll+"','"+branch+"','"+sub7+"','"+sub7grade+"','"+sub7gradepoint+"','"+sub7credits+"')";
+            String s8="insert into result values('"+roll+"','"+branch+"','"+sub8+"','"+sub8grade+"','"+sub1gradepoint+"','"+sub1credits+"')";
+            String s9="insert into result values('"+roll+"','"+branch+"','"+sub9+"','"+sub9grade+"','"+sub9gradepoint+"','"+sub9credits+"')";
+           String s10="insert into result values('"+roll+"','"+branch+"','"+sub10+"','"+sub10grade+"','"+sub10gradepoint+"','"+sub10credits+"')";
+            
+            int a=st.executeUpdate(std);
+            int b=st.executeUpdate(s1);
+            int c=st.executeUpdate(s2);
+            int d=st.executeUpdate(s3);
+            int e=st.executeUpdate(s4);
+            int f=st.executeUpdate(s5);
+            int g=st.executeUpdate(s6);
+            int h=st.executeUpdate(s7);
+            int i=st.executeUpdate(s8);
+            int j=st.executeUpdate(s9);
+            int k=st.executeUpdate(s10);
+
+            if((a>0)&&(b>0)&&(c>0)&&(d>0)&&(e>0)&&(f>0)&&(g>0)&&(h>0)&&(i>0)&&(j>0)&&(k>0))
+            {
+                out.println("inserted succesfully");
+            }
+            else{
+                out.println("not inserted");
+            }
+          st.close()
+          con.close()
+            
+        } 
+    catch(ClassNotFoundException | SQLException e)
+    {
+        e.printStackTrace();
+    }
+    finally{
+        out.close();
+    }
+ 
+  }
+  }
